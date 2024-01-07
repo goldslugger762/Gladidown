@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtammo = new System.Windows.Forms.Label();
             this.txtscore = new System.Windows.Forms.Label();
             this.txthealth = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@
             this.txtscore.AutoSize = true;
             this.txtscore.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtscore.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtscore.Location = new System.Drawing.Point(762, 9);
+            this.txtscore.Location = new System.Drawing.Point(1705, 9);
             this.txtscore.Name = "txtscore";
             this.txtscore.Size = new System.Drawing.Size(110, 25);
             this.txtscore.TabIndex = 1;
@@ -66,17 +67,18 @@
             this.txthealth.AutoSize = true;
             this.txthealth.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txthealth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txthealth.Location = new System.Drawing.Point(270, 14);
+            this.txthealth.Location = new System.Drawing.Point(628, 19);
             this.txthealth.Name = "txthealth";
             this.txthealth.Size = new System.Drawing.Size(80, 18);
             this.txthealth.TabIndex = 2;
             this.txthealth.Text = "Still alive?";
+            this.txthealth.Click += new System.EventHandler(this.txthealth_Click);
             // 
             // healthbar
             // 
-            this.healthbar.Location = new System.Drawing.Point(356, 14);
+            this.healthbar.Location = new System.Drawing.Point(714, 14);
             this.healthbar.Name = "healthbar";
-            this.healthbar.Size = new System.Drawing.Size(197, 23);
+            this.healthbar.Size = new System.Drawing.Size(374, 23);
             this.healthbar.TabIndex = 3;
             this.healthbar.Value = 100;
             this.healthbar.Click += new System.EventHandler(this.healthbar_Click);
@@ -89,10 +91,11 @@
             // 
             // player
             // 
+            this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Image = global::etozhestkapec.Properties.Resources.up;
-            this.player.Location = new System.Drawing.Point(370, 582);
+            this.player.Location = new System.Drawing.Point(881, 716);
             this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(57, 62);
+            this.player.Size = new System.Drawing.Size(36, 51);
             this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.player.TabIndex = 4;
             this.player.TabStop = false;
@@ -101,14 +104,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Wheat;
-            this.ClientSize = new System.Drawing.Size(884, 681);
+            this.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1884, 961);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthbar);
             this.Controls.Add(this.txthealth);
             this.Controls.Add(this.txtscore);
             this.Controls.Add(this.txtammo);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gladidown\'";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownIs);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUpIs);

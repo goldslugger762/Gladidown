@@ -57,7 +57,7 @@ namespace etozhestkapec
                 bullet.Top += speed;
             }
 
-            if (bullet.Left < 10 || bullet.Left > 860 || bullet.Top < 10 || bullet.Top > 600)
+            if (bullet.Left < 10 || bullet.Left > 1900 || bullet.Top < 10 || bullet.Top > 1000)
             {
                 bulletTimer.Stop();
                 bulletTimer.Dispose();
