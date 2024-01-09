@@ -14,7 +14,7 @@ using etozhestkapec.Properties;
 
 namespace etozhestkapec
 {
-    public partial class Form1 : Form
+    public partial class Form5 : Form
     {
 
 
@@ -23,15 +23,16 @@ namespace etozhestkapec
         int playerHealth = 100 + Settings.Default.helthprokachka;
         int speed = 3 + Settings.Default.speedprokachka;
         int ammo = 5 + Settings.Default.kamniprokachka;
-        int zedSpeed = 5;
+        int zedSpeed = 7;
         int startspeed = 3 + Settings.Default.speedprokachka;
         Random randNum = new Random();
         int score;
         List<PictureBox> zedsList = new List<PictureBox>();
+        List<PictureBox> spikeList = new List<PictureBox>();
 
 
 
-        public Form1()
+        public Form5()
         {
             InitializeComponent();
             RestartGame();
@@ -86,13 +87,6 @@ namespace etozhestkapec
                 player.Top += speed;
             }
 
-            if (score == 250)
-            {
-                gametimer.Stop();
-                nextlevellabel.Visible = true;
-                nextlevel.Visible = true;
-
-            }
 
 
             if (nazhata == false)
@@ -142,6 +136,18 @@ namespace etozhestkapec
                         ((PictureBox)x).Image = Properties.Resources.zedd;
                     }
                 }
+
+                foreach (Control y in this.Controls)
+                {
+                    if (y is PictureBox && (string)y.Tag == "spike")
+                    {
+                        if (player.Bounds.IntersectsWith(y.Bounds))
+                        {
+                            playerHealth -= 1;
+                        }
+                    }
+                }
+
 
 
                 foreach (Control j in this.Controls)
@@ -255,8 +261,6 @@ namespace etozhestkapec
                 nenazhata = false;
                 AttackWhip(facing);
             }
-
-
         }
 
 
@@ -270,14 +274,6 @@ namespace etozhestkapec
         private void txthealth_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void nextlevel_Click(object sender, EventArgs e)
-        {
-            Visible = false;
-            Form lvl2 = new Form5();
-            lvl2.Show();
-            this.Close();
         }
 
         private void KeyUpIs(object sender, KeyEventArgs e)
@@ -328,10 +324,10 @@ namespace etozhestkapec
                 Settings.Default.Save();
                 this.Close();
             }
-            }
-        
+        }
 
-        
+
+
 
 
 
@@ -389,7 +385,23 @@ namespace etozhestkapec
             player.BringToFront();
         }
 
-       
+
+        private void spikes()
+        {
+            PictureBox spike = new PictureBox();
+            spike.Tag = "spike";
+            spike.BackColor = Color.Transparent;
+            spike.Image = Properties.Resources.spike;
+            spike.Left = randNum.Next(500, 1500);
+            spike.Top = randNum.Next(300, 700);
+            spike.SizeMode = PictureBoxSizeMode.StretchImage;
+            spike.Height = 50;
+            spike.Width = 45;
+            spikeList.Add(spike);
+            this.Controls.Add(spike);
+            player.BringToFront();
+            spike.BringToFront();
+        }
 
 
 
@@ -402,11 +414,21 @@ namespace etozhestkapec
                 this.Controls.Remove(i);
             }
 
-            zedsList.Clear();
+            foreach (PictureBox i in spikeList)
+            {
+                this.Controls.Remove(i);
+            }
 
-            for (int i = 0; i < 3; i++)
+            zedsList.Clear();
+            spikeList.Clear();
+
+            for (int i = 0; i < 4; i++)
             {
                 MakeZeds();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                spikes();
             }
 
             goUp = false;
@@ -424,7 +446,7 @@ namespace etozhestkapec
             gametimer.Start();
         }
 
-        
+
 
 
 

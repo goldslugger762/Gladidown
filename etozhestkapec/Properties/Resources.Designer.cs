@@ -83,6 +83,16 @@ namespace etozhestkapec.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background2 {
+            get {
+                object obj = ResourceManager.GetObject("Background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap down {
             get {
                 object obj = ResourceManager.GetObject("down", resourceCulture);
@@ -116,6 +126,16 @@ namespace etozhestkapec.Properties {
         internal static System.Drawing.Bitmap rocks {
             get {
                 object obj = ResourceManager.GetObject("rocks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spike {
+            get {
+                object obj = ResourceManager.GetObject("spike", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

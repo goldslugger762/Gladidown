@@ -14,7 +14,7 @@ using etozhestkapec.Properties;
 
 namespace etozhestkapec
 {
-    public partial class Form1 : Form
+    public partial class Form6 : Form
     {
 
 
@@ -23,18 +23,22 @@ namespace etozhestkapec
         int playerHealth = 100 + Settings.Default.helthprokachka;
         int speed = 3 + Settings.Default.speedprokachka;
         int ammo = 5 + Settings.Default.kamniprokachka;
-        int zedSpeed = 5;
+        int zedSpeed = 6;
         int startspeed = 3 + Settings.Default.speedprokachka;
         Random randNum = new Random();
         int score;
         List<PictureBox> zedsList = new List<PictureBox>();
+        List<PictureBox> spikeList = new List<PictureBox>();
 
 
 
-        public Form1()
+        public Form6()
         {
             InitializeComponent();
             RestartGame();
+            lastbestlabel.Text = "Last Best" + Convert.ToString(Settings.Default.aktualnoeznachenie);
+            Bestlabel.Text = "Best:" + Convert.ToString(Settings.Default.staroeznachenie);
+            Settings.Default.aktualnoeznachenie = 0;
         }
 
 
@@ -86,13 +90,6 @@ namespace etozhestkapec
                 player.Top += speed;
             }
 
-            if (score == 250)
-            {
-                gametimer.Stop();
-                nextlevellabel.Visible = true;
-                nextlevel.Visible = true;
-
-            }
 
 
             if (nazhata == false)
@@ -143,6 +140,18 @@ namespace etozhestkapec
                     }
                 }
 
+                foreach (Control y in this.Controls)
+                {
+                    if (y is PictureBox && (string)y.Tag == "spike")
+                    {
+                        if (player.Bounds.IntersectsWith(y.Bounds))
+                        {
+                            playerHealth -= 1;
+                        }
+                    }
+                }
+
+
 
                 foreach (Control j in this.Controls)
                 {
@@ -151,7 +160,7 @@ namespace etozhestkapec
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
                             score++;
-                            Properties.Settings.Default.ochki += 2;
+                            Properties.Settings.Default.aktualnoeznachenie += 1;
                             this.Controls.Remove(j);
                             ((PictureBox)j).Dispose();
                             this.Controls.Remove(x);
@@ -168,7 +177,7 @@ namespace etozhestkapec
                         if (x.Bounds.IntersectsWith(k.Bounds))
                         {
                             score++;
-                            Properties.Settings.Default.ochki += 2;
+                            Properties.Settings.Default.aktualnoeznachenie += 1;
                             this.Controls.Remove(k);
                             ((PictureBox)k).Dispose();
                             this.Controls.Remove(x);
@@ -202,6 +211,10 @@ namespace etozhestkapec
                 if (player.Top < 50)
                 {
                     goUp = false;
+                }
+                if (Settings.Default.aktualnoeznachenie > Settings.Default.staroeznachenie)
+                {
+                    Settings.Default.staroeznachenie = Settings.Default.aktualnoeznachenie;
                 }
                 Settings.Default.Save();
             }
@@ -255,8 +268,6 @@ namespace etozhestkapec
                 nenazhata = false;
                 AttackWhip(facing);
             }
-
-
         }
 
 
@@ -270,14 +281,6 @@ namespace etozhestkapec
         private void txthealth_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void nextlevel_Click(object sender, EventArgs e)
-        {
-            Visible = false;
-            Form lvl2 = new Form5();
-            lvl2.Show();
-            this.Close();
         }
 
         private void KeyUpIs(object sender, KeyEventArgs e)
@@ -320,6 +323,7 @@ namespace etozhestkapec
 
             if (e.KeyCode == Keys.Enter)
             {
+                Settings.Default.aktualnoeznachenie = 0;
                 Settings.Default.Save();
                 RestartGame();
             }
@@ -328,12 +332,7 @@ namespace etozhestkapec
                 Settings.Default.Save();
                 this.Close();
             }
-            }
-        
-
-        
-
-
+        }
 
 
         private void ShootBullet(string direction)
@@ -389,7 +388,23 @@ namespace etozhestkapec
             player.BringToFront();
         }
 
-       
+
+        private void spikes()
+        {
+            PictureBox spike = new PictureBox();
+            spike.Tag = "spike";
+            spike.BackColor = Color.Transparent;
+            spike.Image = Properties.Resources.spike;
+            spike.Left = randNum.Next(500, 1500);
+            spike.Top = randNum.Next(300, 700);
+            spike.SizeMode = PictureBoxSizeMode.StretchImage;
+            spike.Height = 50;
+            spike.Width = 45;
+            spikeList.Add(spike);
+            this.Controls.Add(spike);
+            player.BringToFront();
+            spike.BringToFront();
+        }
 
 
 
@@ -402,11 +417,21 @@ namespace etozhestkapec
                 this.Controls.Remove(i);
             }
 
-            zedsList.Clear();
+            foreach (PictureBox i in spikeList)
+            {
+                this.Controls.Remove(i);
+            }
 
-            for (int i = 0; i < 3; i++)
+            zedsList.Clear();
+            spikeList.Clear();
+
+            for (int i = 0; i < 4; i++)
             {
                 MakeZeds();
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                spikes();
             }
 
             goUp = false;
@@ -424,7 +449,7 @@ namespace etozhestkapec
             gametimer.Start();
         }
 
-        
+
 
 
 

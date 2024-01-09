@@ -19,7 +19,8 @@ namespace etozhestkapec
 
         private void myHero_Click(object sender, EventArgs e)
         {
-
+            Form form4 = new Form4();
+            form4.ShowDialog();
         }
 
         private void playbutton_Click(object sender, EventArgs e)
@@ -31,6 +32,18 @@ namespace etozhestkapec
         private void exitbutton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void upravlenie_Click(object sender, EventArgs e)
+        {
+            Form form3 = new Form3();
+            form3.Show();
+        }
+
+        private void endlessmode_Click(object sender, EventArgs e)
+        {
+            Form form6 = new Form6();
+            form6.Show();
         }
     }
 }

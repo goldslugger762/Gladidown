@@ -17,10 +17,7 @@ namespace etozhestkapec
         public int whipTop;
 
 
-        private int speed = 1;
         private PictureBox Whip = new PictureBox();
-        private Timer whipTimer = new Timer();
-        int seccount = 0;
 
         
 
@@ -40,8 +37,6 @@ namespace etozhestkapec
             form.Controls.Add(Whip);
 
 
-            whipTimer.Interval = 5000000;
-            whipTimer.Tick += new EventHandler(WhipTimerEvent);
             if (direction == "left")
             {
                 Whip.Image = Properties.Resources.whipl;
@@ -63,34 +58,6 @@ namespace etozhestkapec
 
         
 
-        private void WhipTimerEvent(object sender, EventArgs e)
-        {
-            if (direction == "left")
-            {
-                Whip.Left -= speed;
-
-            }
-            if (direction == "right")
-            {
-                Whip.Left += speed;
-            }
-            if (direction == "up")
-            {
-                Whip.Top -= speed;
-            }
-            if (direction == "down")
-            {
-                Whip.Top += speed;
-            }
-            if (Whip.Left < 10 || Whip.Left > 1900 || Whip.Top < 10 || Whip.Top > 1000 && seccount == 1)
-            {
-                whipTimer.Stop();
-                whipTimer.Dispose();
-                Whip.Dispose();
-                whipTimer = null;
-                Whip = null;
-            }
-        }
 
     }
 }

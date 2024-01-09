@@ -1,6 +1,6 @@
 ﻿namespace etozhestkapec
 {
-    partial class Form1
+    partial class Form6
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form6));
             this.txtammo = new System.Windows.Forms.Label();
             this.txtscore = new System.Windows.Forms.Label();
             this.txthealth = new System.Windows.Forms.Label();
             this.healthbar = new System.Windows.Forms.ProgressBar();
             this.gametimer = new System.Windows.Forms.Timer(this.components);
             this.player = new System.Windows.Forms.PictureBox();
-            this.nextlevel = new System.Windows.Forms.Button();
-            this.nextlevellabel = new System.Windows.Forms.Label();
+            this.lastbestlabel = new System.Windows.Forms.Label();
+            this.Bestlabel = new System.Windows.Forms.Label();
+            this.sbrosbest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             this.txtammo.AutoSize = true;
             this.txtammo.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtammo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtammo.Location = new System.Drawing.Point(434, 14);
+            this.txtammo.Location = new System.Drawing.Point(324, 9);
             this.txtammo.Name = "txtammo";
             this.txtammo.Size = new System.Drawing.Size(100, 25);
             this.txtammo.TabIndex = 0;
@@ -58,7 +59,7 @@
             this.txtscore.AutoSize = true;
             this.txtscore.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtscore.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtscore.Location = new System.Drawing.Point(1405, 19);
+            this.txtscore.Location = new System.Drawing.Point(1459, 19);
             this.txtscore.Name = "txtscore";
             this.txtscore.Size = new System.Drawing.Size(110, 25);
             this.txtscore.TabIndex = 1;
@@ -102,30 +103,40 @@
             this.player.TabIndex = 4;
             this.player.TabStop = false;
             // 
-            // nextlevel
+            // lastbestlabel
             // 
-            this.nextlevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextlevel.Location = new System.Drawing.Point(854, 276);
-            this.nextlevel.Name = "nextlevel";
-            this.nextlevel.Size = new System.Drawing.Size(191, 66);
-            this.nextlevel.TabIndex = 5;
-            this.nextlevel.Text = "На следующий уровень!";
-            this.nextlevel.UseVisualStyleBackColor = true;
-            this.nextlevel.Visible = false;
-            this.nextlevel.Click += new System.EventHandler(this.nextlevel_Click);
+            this.lastbestlabel.AutoSize = true;
+            this.lastbestlabel.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastbestlabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lastbestlabel.Location = new System.Drawing.Point(309, 47);
+            this.lastbestlabel.Name = "lastbestlabel";
+            this.lastbestlabel.Size = new System.Drawing.Size(115, 25);
+            this.lastbestlabel.TabIndex = 5;
+            this.lastbestlabel.Text = "Lastbest: 0";
             // 
-            // nextlevellabel
+            // Bestlabel
             // 
-            this.nextlevellabel.BackColor = System.Drawing.Color.Transparent;
-            this.nextlevellabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextlevellabel.Location = new System.Drawing.Point(646, 362);
-            this.nextlevellabel.Name = "nextlevellabel";
-            this.nextlevellabel.Size = new System.Drawing.Size(664, 54);
-            this.nextlevellabel.TabIndex = 6;
-            this.nextlevellabel.Text = "Молодец! Ты прошёл данный уровень, впереди тебя ждёт ещё много испытаний!";
-            this.nextlevellabel.Visible = false;
+            this.Bestlabel.AutoSize = true;
+            this.Bestlabel.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Bestlabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Bestlabel.Location = new System.Drawing.Point(347, 84);
+            this.Bestlabel.Name = "Bestlabel";
+            this.Bestlabel.Size = new System.Drawing.Size(77, 25);
+            this.Bestlabel.TabIndex = 6;
+            this.Bestlabel.Text = "Best: 0";
             // 
-            // Form1
+            // sbrosbest
+            // 
+            this.sbrosbest.BackColor = System.Drawing.Color.Transparent;
+            this.sbrosbest.Location = new System.Drawing.Point(1797, 905);
+            this.sbrosbest.Name = "sbrosbest";
+            this.sbrosbest.Size = new System.Drawing.Size(75, 23);
+            this.sbrosbest.TabIndex = 7;
+            this.sbrosbest.Text = "Сброс";
+            this.sbrosbest.UseVisualStyleBackColor = false;
+            this.sbrosbest.Visible = false;
+            // 
+            // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,8 +144,9 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1884, 961);
-            this.Controls.Add(this.nextlevellabel);
-            this.Controls.Add(this.nextlevel);
+            this.Controls.Add(this.sbrosbest);
+            this.Controls.Add(this.Bestlabel);
+            this.Controls.Add(this.lastbestlabel);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthbar);
             this.Controls.Add(this.txthealth);
@@ -145,10 +157,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Form6";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gladidown\'";
+            this.Text = "Gladidown\' Endless Mode";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownIs);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUpIs);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
@@ -165,8 +177,9 @@
         private System.Windows.Forms.ProgressBar healthbar;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer gametimer;
-        private System.Windows.Forms.Button nextlevel;
-        private System.Windows.Forms.Label nextlevellabel;
+        private System.Windows.Forms.Label lastbestlabel;
+        private System.Windows.Forms.Label Bestlabel;
+        private System.Windows.Forms.Button sbrosbest;
     }
 }
 
