@@ -61,6 +61,8 @@ namespace etozhestkapec
             }
             else
             {
+                umerlabel.Visible = true;
+                umerlabel.BringToFront();
                 gameOver = true;
                 gametimer.Stop();
             }
@@ -436,6 +438,7 @@ namespace etozhestkapec
             goLeft = false;
             goRight = false;
             gameOver = false;
+            umerlabel.Visible = false;
 
 
 

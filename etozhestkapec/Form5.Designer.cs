@@ -36,6 +36,7 @@
             this.healthbar = new System.Windows.Forms.ProgressBar();
             this.gametimer = new System.Windows.Forms.Timer(this.components);
             this.player = new System.Windows.Forms.PictureBox();
+            this.umerlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +101,18 @@
             this.player.TabIndex = 4;
             this.player.TabStop = false;
             // 
+            // umerlabel
+            // 
+            this.umerlabel.BackColor = System.Drawing.Color.Transparent;
+            this.umerlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.umerlabel.ForeColor = System.Drawing.Color.Red;
+            this.umerlabel.Location = new System.Drawing.Point(790, 410);
+            this.umerlabel.Name = "umerlabel";
+            this.umerlabel.Size = new System.Drawing.Size(304, 140);
+            this.umerlabel.TabIndex = 9;
+            this.umerlabel.Text = "Ты умер!\r\nНажми Enter для рестарта.\r\n";
+            this.umerlabel.Visible = false;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +121,7 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1884, 961);
+            this.Controls.Add(this.umerlabel);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthbar);
             this.Controls.Add(this.txthealth);
@@ -138,6 +152,7 @@
         private System.Windows.Forms.ProgressBar healthbar;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer gametimer;
+        private System.Windows.Forms.Label umerlabel;
     }
 }
 

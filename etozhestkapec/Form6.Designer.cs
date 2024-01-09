@@ -38,7 +38,7 @@
             this.player = new System.Windows.Forms.PictureBox();
             this.lastbestlabel = new System.Windows.Forms.Label();
             this.Bestlabel = new System.Windows.Forms.Label();
-            this.sbrosbest = new System.Windows.Forms.Button();
+            this.umerlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,16 +125,17 @@
             this.Bestlabel.TabIndex = 6;
             this.Bestlabel.Text = "Best: 0";
             // 
-            // sbrosbest
+            // umerlabel
             // 
-            this.sbrosbest.BackColor = System.Drawing.Color.Transparent;
-            this.sbrosbest.Location = new System.Drawing.Point(1797, 905);
-            this.sbrosbest.Name = "sbrosbest";
-            this.sbrosbest.Size = new System.Drawing.Size(75, 23);
-            this.sbrosbest.TabIndex = 7;
-            this.sbrosbest.Text = "Сброс";
-            this.sbrosbest.UseVisualStyleBackColor = false;
-            this.sbrosbest.Visible = false;
+            this.umerlabel.BackColor = System.Drawing.Color.Transparent;
+            this.umerlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.umerlabel.ForeColor = System.Drawing.Color.Red;
+            this.umerlabel.Location = new System.Drawing.Point(802, 419);
+            this.umerlabel.Name = "umerlabel";
+            this.umerlabel.Size = new System.Drawing.Size(304, 140);
+            this.umerlabel.TabIndex = 8;
+            this.umerlabel.Text = "Ты умер!\r\nНажми Enter для рестарта.\r\n";
+            this.umerlabel.Visible = false;
             // 
             // Form6
             // 
@@ -144,7 +145,7 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1884, 961);
-            this.Controls.Add(this.sbrosbest);
+            this.Controls.Add(this.umerlabel);
             this.Controls.Add(this.Bestlabel);
             this.Controls.Add(this.lastbestlabel);
             this.Controls.Add(this.player);
@@ -179,7 +180,7 @@
         private System.Windows.Forms.Timer gametimer;
         private System.Windows.Forms.Label lastbestlabel;
         private System.Windows.Forms.Label Bestlabel;
-        private System.Windows.Forms.Button sbrosbest;
+        private System.Windows.Forms.Label umerlabel;
     }
 }
 

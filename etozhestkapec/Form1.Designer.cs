@@ -38,6 +38,7 @@
             this.player = new System.Windows.Forms.PictureBox();
             this.nextlevel = new System.Windows.Forms.Button();
             this.nextlevellabel = new System.Windows.Forms.Label();
+            this.umerlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +126,18 @@
             this.nextlevellabel.Text = "Молодец! Ты прошёл данный уровень, впереди тебя ждёт ещё много испытаний!";
             this.nextlevellabel.Visible = false;
             // 
+            // umerlabel
+            // 
+            this.umerlabel.BackColor = System.Drawing.Color.Transparent;
+            this.umerlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.umerlabel.ForeColor = System.Drawing.Color.Red;
+            this.umerlabel.Location = new System.Drawing.Point(802, 416);
+            this.umerlabel.Name = "umerlabel";
+            this.umerlabel.Size = new System.Drawing.Size(304, 140);
+            this.umerlabel.TabIndex = 7;
+            this.umerlabel.Text = "Ты умер!\r\nНажми Enter для рестарта.\r\n";
+            this.umerlabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +146,7 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1884, 961);
+            this.Controls.Add(this.umerlabel);
             this.Controls.Add(this.nextlevellabel);
             this.Controls.Add(this.nextlevel);
             this.Controls.Add(this.player);
@@ -167,6 +181,7 @@
         private System.Windows.Forms.Timer gametimer;
         private System.Windows.Forms.Button nextlevel;
         private System.Windows.Forms.Label nextlevellabel;
+        private System.Windows.Forms.Label umerlabel;
     }
 }
 

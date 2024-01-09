@@ -15,6 +15,7 @@ namespace etozhestkapec
     public partial class Form4 : Form
     {
         Font newfont = new Font("Serif", 16);
+        Font defaultfont = new Font("Sans Serif", 10);
 
 
         public Form4()
@@ -142,6 +143,7 @@ namespace etozhestkapec
                 a -= 500;
                 yourscore.Text = Convert.ToString(a);
                 costskorost.Text = "Следующий уровень уже будет стоить 700!";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 700 && yourspeedtxt.Text == "1")
             {
@@ -154,6 +156,7 @@ namespace etozhestkapec
                 a -= 700;
                 yourscore.Text = Convert.ToString(a);
                 costskorost.Text = "Уже подороже! 900!";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 900 && yourspeedtxt.Text == "2")
             {
@@ -166,6 +169,7 @@ namespace etozhestkapec
                 a -= 900;
                 yourscore.Text = Convert.ToString(a);
                 costskorost.Text = "Не слишком быстро? 1200";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 1200 && yourspeedtxt.Text == "3")
             {
@@ -178,6 +182,7 @@ namespace etozhestkapec
                 a -= 1200;
                 yourscore.Text = Convert.ToString(a);
                 costskorost.Text = "Ты почти у цели. 1800";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 1800 && yourspeedtxt.Text == "4")
             {
@@ -194,6 +199,7 @@ namespace etozhestkapec
                 costskorost.BackColor = Color.Black;
                 costskorost.ForeColor = Color.Gold;
                 speedprokachkabutton.Visible = false;
+                return;
             }
         }
 
@@ -210,6 +216,7 @@ namespace etozhestkapec
                 a -= 250;
                 yourscore.Text = Convert.ToString(a);
                 costkamni.Text = "$450";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 450 && yourstonestxt.Text == "1")
             {
@@ -222,6 +229,7 @@ namespace etozhestkapec
                 a -= 450;
                 yourscore.Text = Convert.ToString(a);
                 costkamni.Text = "Закидай их всех! 650";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 650 && yourstonestxt.Text == "2")
             {
@@ -234,6 +242,7 @@ namespace etozhestkapec
                 a -= 650;
                 yourscore.Text = Convert.ToString(a);
                 costkamni.Text = "Не тяжко носить? 850";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 850 && yourstonestxt.Text == "3")
             {
@@ -246,6 +255,7 @@ namespace etozhestkapec
                 a -= 850;
                 yourscore.Text = Convert.ToString(a);
                 costkamni.Text = "Ты все ещё можешь бегать? 1050";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 1050 && yourstonestxt.Text == "4")
             {
@@ -262,6 +272,7 @@ namespace etozhestkapec
                 costkamni.BackColor = Color.Black;
                 costkamni.ForeColor = Color.Gold;
                 stonesprokachkabutton.Visible = false;
+                return;
             }
         }
 
@@ -278,6 +289,7 @@ namespace etozhestkapec
                 a -= 700;
                 yourscore.Text = Convert.ToString(a);
                 costhealth.Text = "Ещё жизней! 950";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 950 && yourheatlhtxt.Text == "1")
             {
@@ -290,6 +302,7 @@ namespace etozhestkapec
                 a -= 950;
                 yourscore.Text = Convert.ToString(a);
                 costhealth.Text = "Дополнительно! 1250";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 1250 && yourheatlhtxt.Text == "2")
             {
@@ -302,6 +315,7 @@ namespace etozhestkapec
                 a -= 1250;
                 yourscore.Text = Convert.ToString(a);
                 costhealth.Text = "Ещё больше хп 1600";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 1600 && yourheatlhtxt.Text == "3")
             {
@@ -314,6 +328,7 @@ namespace etozhestkapec
                 a -= 1600;
                 yourscore.Text = Convert.ToString(a);
                 costhealth.Text = "Вторая броня! 2000";
+                return;
             }
             if (Convert.ToInt32(yourscore.Text) >= 2000 && yourheatlhtxt.Text == "4")
             {
@@ -331,6 +346,7 @@ namespace etozhestkapec
                 costhealth.BackColor = Color.Black;
                 costhealth.ForeColor = Color.Gold;
                 heatlhprokachkabutton.Visible = false;
+                return;
             }
         }
 
@@ -366,6 +382,23 @@ namespace etozhestkapec
             yourscore.Text = "0";
             yourspeedtxt.Text = "0";
             yourstonestxt.Text = "0";
+            costkamni.Text = "Стоимость: 250 очков\r\nПовышает твоё стартовое количество камней на 5 единиц за уровень!";
+            costkamni.BackColor = Color.White;
+            costkamni.Font = defaultfont;
+            costkamni.ForeColor = Color.Black; 
+            costhealth.Text = "Стоимость: 700 очков\r\nПовышает твоё максимальное количество жизней на 20 единиц за уровень! Живи дольше!";
+            costhealth.BackColor = Color.White;
+            costhealth.Font = defaultfont;
+            costhealth.ForeColor = Color.Black;
+            costskorost.Text = "Стоимость: 500 очков\r\nПовышает твою скорость на 5 единиц за уровень!";
+            costskorost.BackColor = Color.White;
+            costskorost.Font = defaultfont;
+            costskorost.ForeColor = Color.Black;
+            heatlhprokachkabutton.Visible = true;
+            speedprokachkabutton.Visible = true;
+            stonesprokachkabutton.Visible = true;
+
+
             Settings.Default.Save();
         }
 
