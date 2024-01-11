@@ -89,7 +89,15 @@ namespace etozhestkapec
                 player.Top += speed;
             }
 
+            if (score == 175)
+            {
+                gametimer.Stop();
+                nextlevellabel.Visible = true;
+                nextlevel.Visible = true;
+                nextlevel.BringToFront();
+                nextlevellabel.BringToFront();
 
+            }
 
             if (nazhata == false)
             {
@@ -328,11 +336,17 @@ namespace etozhestkapec
             }
         }
 
+        private void player_Click_1(object sender, EventArgs e)
+        {
 
+        }
 
-
-
-
+        private void nextlevel_Click(object sender, EventArgs e)
+        {
+            Form lvl3 = new Form7();
+            lvl3.Show();
+            this.Close();
+        }
 
         private void ShootBullet(string direction)
         {

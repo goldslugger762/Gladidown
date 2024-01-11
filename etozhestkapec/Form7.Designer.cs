@@ -1,6 +1,6 @@
 ﻿namespace etozhestkapec
 {
-    partial class Form5
+    partial class Form7
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7));
             this.txtammo = new System.Windows.Forms.Label();
             this.txtscore = new System.Windows.Forms.Label();
             this.txthealth = new System.Windows.Forms.Label();
@@ -37,8 +37,7 @@
             this.gametimer = new System.Windows.Forms.Timer(this.components);
             this.player = new System.Windows.Forms.PictureBox();
             this.umerlabel = new System.Windows.Forms.Label();
-            this.nextlevel = new System.Windows.Forms.Button();
-            this.nextlevellabel = new System.Windows.Forms.Label();
+            this.timerforpanther = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,30 +115,13 @@
             this.umerlabel.Text = "Ты умер!\r\nНажми Enter для рестарта.\r\n";
             this.umerlabel.Visible = false;
             // 
-            // nextlevel
+            // timerforpanther
             // 
-            this.nextlevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextlevel.Location = new System.Drawing.Point(838, 246);
-            this.nextlevel.Name = "nextlevel";
-            this.nextlevel.Size = new System.Drawing.Size(191, 66);
-            this.nextlevel.TabIndex = 10;
-            this.nextlevel.Text = "На следующий уровень!";
-            this.nextlevel.UseVisualStyleBackColor = true;
-            this.nextlevel.Visible = false;
-            this.nextlevel.Click += new System.EventHandler(this.nextlevel_Click);
+            this.timerforpanther.Enabled = true;
+            this.timerforpanther.Interval = 20;
+            this.timerforpanther.Tick += new System.EventHandler(this.timerforpanther_Tick);
             // 
-            // nextlevellabel
-            // 
-            this.nextlevellabel.BackColor = System.Drawing.Color.Transparent;
-            this.nextlevellabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextlevellabel.Location = new System.Drawing.Point(626, 332);
-            this.nextlevellabel.Name = "nextlevellabel";
-            this.nextlevellabel.Size = new System.Drawing.Size(664, 54);
-            this.nextlevellabel.TabIndex = 11;
-            this.nextlevellabel.Text = "Не сдавайся! Следующее испытание дарует тебе свободу!";
-            this.nextlevellabel.Visible = false;
-            // 
-            // Form5
+            // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,8 +129,6 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.arena;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1884, 961);
-            this.Controls.Add(this.nextlevellabel);
-            this.Controls.Add(this.nextlevel);
             this.Controls.Add(this.umerlabel);
             this.Controls.Add(this.player);
             this.Controls.Add(this.healthbar);
@@ -160,10 +140,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "Form5";
+            this.Name = "Form7";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gladidown\' Level 2";
+            this.Text = "Gladidown\' Level 3";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownIs);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUpIs);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
@@ -181,8 +161,7 @@
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer gametimer;
         private System.Windows.Forms.Label umerlabel;
-        private System.Windows.Forms.Button nextlevel;
-        private System.Windows.Forms.Label nextlevellabel;
+        private System.Windows.Forms.Timer timerforpanther;
     }
 }
 

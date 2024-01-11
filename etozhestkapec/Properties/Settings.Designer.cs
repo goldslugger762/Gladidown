@@ -94,5 +94,41 @@ namespace etozhestkapec.Properties {
                 this["staroeznachenie"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int endlessplus {
+            get {
+                return ((int)(this["endlessplus"]));
+            }
+            set {
+                this["endlessplus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int aktualnoeznachenieplus {
+            get {
+                return ((int)(this["aktualnoeznachenieplus"]));
+            }
+            set {
+                this["aktualnoeznachenieplus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int staroeznachenieplus {
+            get {
+                return ((int)(this["staroeznachenieplus"]));
+            }
+            set {
+                this["staroeznachenieplus"] = value;
+            }
+        }
     }
 }

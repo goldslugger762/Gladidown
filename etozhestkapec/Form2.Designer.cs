@@ -34,6 +34,7 @@
             this.exitbutton = new System.Windows.Forms.Button();
             this.upravlenie = new System.Windows.Forms.Button();
             this.endlessmode = new System.Windows.Forms.Button();
+            this.endlessplus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // playbutton
@@ -91,6 +92,18 @@
             this.endlessmode.UseVisualStyleBackColor = false;
             this.endlessmode.Click += new System.EventHandler(this.endlessmode_Click);
             // 
+            // endlessplus
+            // 
+            this.endlessplus.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.endlessplus.Location = new System.Drawing.Point(607, 151);
+            this.endlessplus.Name = "endlessplus";
+            this.endlessplus.Size = new System.Drawing.Size(129, 33);
+            this.endlessplus.TabIndex = 5;
+            this.endlessplus.Text = "Бесконечный режим +";
+            this.endlessplus.UseVisualStyleBackColor = false;
+            this.endlessplus.Visible = false;
+            this.endlessplus.Click += new System.EventHandler(this.endlessplus_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +111,7 @@
             this.BackgroundImage = global::etozhestkapec.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.endlessplus);
             this.Controls.Add(this.endlessmode);
             this.Controls.Add(this.upravlenie);
             this.Controls.Add(this.exitbutton);
@@ -121,5 +135,6 @@
         private System.Windows.Forms.Button exitbutton;
         private System.Windows.Forms.Button upravlenie;
         private System.Windows.Forms.Button endlessmode;
+        private System.Windows.Forms.Button endlessplus;
     }
 }

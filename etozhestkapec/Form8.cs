@@ -14,7 +14,7 @@ using etozhestkapec.Properties;
 
 namespace etozhestkapec
 {
-    public partial class Form6 : Form
+    public partial class Form8 : Form
     {
 
 
@@ -23,22 +23,24 @@ namespace etozhestkapec
         int playerHealth = 100 + Settings.Default.helthprokachka;
         int speed = 3 + Settings.Default.speedprokachka;
         int ammo = 5 + Settings.Default.kamniprokachka;
-        int zedSpeed = 6;
+        int zedSpeed = 5;
+        int pantherSpeed = 13;
         int startspeed = 3 + Settings.Default.speedprokachka;
         Random randNum = new Random();
         int score;
         List<PictureBox> zedsList = new List<PictureBox>();
         List<PictureBox> spikeList = new List<PictureBox>();
+        List<PictureBox> pantherList = new List<PictureBox>();
 
 
 
-        public Form6()
+        public Form8()
         {
             InitializeComponent();
             RestartGame();
-            lastbestlabel.Text = "Last Best:" + Convert.ToString(Settings.Default.aktualnoeznachenie);
-            Bestlabel.Text = "Best:" + Convert.ToString(Settings.Default.staroeznachenie);
-            Settings.Default.aktualnoeznachenie = 0;
+            lastbestlabel.Text = "Last Best:" + Convert.ToString(Settings.Default.aktualnoeznachenieplus);
+            Bestlabel.Text = "Best:" + Convert.ToString(Settings.Default.staroeznachenieplus);
+            Settings.Default.aktualnoeznachenieplus = 0;
         }
 
 
@@ -68,9 +70,11 @@ namespace etozhestkapec
                 umerlabel.BringToFront();
                 gameOver = true;
                 gametimer.Stop();
+                timerforpanther.Stop();
             }
             txtammo.Text = "Stones:" + ammo;
             txtscore.Text = "Corpses:" + score;
+
 
             if (goLeft == true && player.Left > 0)
             {
@@ -162,7 +166,8 @@ namespace etozhestkapec
                         if (x.Bounds.IntersectsWith(j.Bounds))
                         {
                             score++;
-                            Properties.Settings.Default.aktualnoeznachenie += 1;
+                            Properties.Settings.Default.aktualnoeznachenieplus += 1;
+                            Properties.Settings.Default.ochki += 2;
                             this.Controls.Remove(j);
                             ((PictureBox)j).Dispose();
                             this.Controls.Remove(x);
@@ -179,7 +184,8 @@ namespace etozhestkapec
                         if (x.Bounds.IntersectsWith(k.Bounds))
                         {
                             score++;
-                            Properties.Settings.Default.aktualnoeznachenie += 1;
+                            Properties.Settings.Default.aktualnoeznachenieplus += 1;
+                            Properties.Settings.Default.ochki += 2;
                             this.Controls.Remove(k);
                             ((PictureBox)k).Dispose();
                             this.Controls.Remove(x);
@@ -202,6 +208,8 @@ namespace etozhestkapec
                         }
                     }
                 }
+
+
                 if (player.Left < 350)
                 {
                     goLeft = false;
@@ -214,13 +222,14 @@ namespace etozhestkapec
                 {
                     goUp = false;
                 }
-                if (Settings.Default.aktualnoeznachenie > Settings.Default.staroeznachenie)
-                {
-                    Settings.Default.staroeznachenie = Settings.Default.aktualnoeznachenie;
-                }
-                Settings.Default.Save();
             }
+            if (Settings.Default.aktualnoeznachenieplus > Settings.Default.staroeznachenieplus)
+            {
+                Settings.Default.staroeznachenieplus = Settings.Default.aktualnoeznachenieplus;
+            }
+            Settings.Default.Save();
         }
+
 
         private void KeyDownIs(object sender, KeyEventArgs e)
         {
@@ -325,7 +334,7 @@ namespace etozhestkapec
 
             if (e.KeyCode == Keys.Enter)
             {
-                Settings.Default.aktualnoeznachenie = 0;
+                Settings.Default.aktualnoeznachenieplus = 0;
                 Settings.Default.Save();
                 RestartGame();
             }
@@ -336,6 +345,10 @@ namespace etozhestkapec
             }
         }
 
+        private void player_Click_1(object sender, EventArgs e)
+        {
+
+        }
 
         private void ShootBullet(string direction)
         {
@@ -344,6 +357,91 @@ namespace etozhestkapec
             shootBullet.bulletLeft = player.Left + (player.Width / 2);
             shootBullet.bulletTop = player.Top + (player.Height / 2);
             shootBullet.MakeBullet(this);
+        }
+
+        private void timerforpanther_Tick(object sender, EventArgs e)
+        {
+            foreach (Control v in this.Controls)
+            {
+                if (v is PictureBox && (string)v.Tag == "panther")
+                {
+
+                    if (player.Bounds.IntersectsWith(v.Bounds))
+                    {
+                        playerHealth -= 3;
+                    }
+
+
+                    if (v.Left > player.Left)
+                    {
+                        v.Left -= pantherSpeed;
+                        ((PictureBox)v).Image = Properties.Resources.pantherl;
+                        v.Height = 35;
+                        v.Width = 135;
+                    }
+                    if (v.Left < player.Left)
+                    {
+                        v.Left += pantherSpeed;
+                        ((PictureBox)v).Image = Properties.Resources.pantherr;
+                        v.Height = 35;
+                        v.Width = 135;
+                    }
+                    if (v.Top > player.Top)
+                    {
+                        v.Top -= pantherSpeed;
+                        ((PictureBox)v).Image = Properties.Resources.pantheru;
+                        v.Height = 135;
+                        v.Width = 35;
+                    }
+                    if (v.Top < player.Top)
+                    {
+                        v.Top += pantherSpeed;
+                        ((PictureBox)v).Image = Properties.Resources.pantherd;
+                        v.Height = 135;
+                        v.Width = 35;
+                    }
+                }
+
+
+                foreach (Control j in this.Controls)
+                {
+                    if (j is PictureBox && (string)j.Tag == "bullet" && v is PictureBox && (string)v.Tag == "panther")
+                    {
+                        if (v.Bounds.IntersectsWith(j.Bounds))
+                        {
+
+                            score++;
+                            Properties.Settings.Default.aktualnoeznachenieplus += 1;
+                            Properties.Settings.Default.ochki += 3;
+                            this.Controls.Remove(j);
+                            ((PictureBox)j).Dispose();
+                            this.Controls.Remove(v);
+                            ((PictureBox)v).Dispose();
+                            zedsList.Remove(((PictureBox)v));
+                            MakePanther();
+                        }
+                    }
+                }
+                foreach (Control k in this.Controls)
+                {
+                    if (k is PictureBox && (string)k.Tag == "melee" && v is PictureBox && (string)v.Tag == "panther")
+                    {
+                        if (v.Bounds.IntersectsWith(k.Bounds))
+                        {
+                            score++;
+                            Properties.Settings.Default.aktualnoeznachenieplus += 1;
+                            Properties.Settings.Default.ochki += 3;
+                            this.Controls.Remove(k);
+                            ((PictureBox)k).Dispose();
+                            this.Controls.Remove(v);
+                            ((PictureBox)v).Dispose();
+                            zedsList.Remove(((PictureBox)v));
+                            MakePanther();
+                        }
+                    }
+                }
+                Settings.Default.Save();
+            }
         }
 
         private void AttackWhip(string direction)
@@ -371,6 +469,22 @@ namespace etozhestkapec
             this.Controls.Add(zed);
             player.BringToFront();
             zed.BringToFront();
+        }
+        private void MakePanther()
+        {
+            PictureBox panther = new PictureBox();
+            panther.Tag = "panther";
+            panther.BackColor = Color.Transparent;
+            panther.Image = Properties.Resources.pantheru;
+            panther.Left = randNum.Next(300, 1700);
+            panther.Top = randNum.Next(200, 750);
+            panther.SizeMode = PictureBoxSizeMode.StretchImage;
+            panther.Height = 130;
+            panther.Width = 35;
+            pantherList.Add(panther);
+            this.Controls.Add(panther);
+            player.BringToFront();
+            panther.BringToFront();
         }
 
         private void DropRocks()
@@ -424,16 +538,27 @@ namespace etozhestkapec
                 this.Controls.Remove(i);
             }
 
+
+            foreach (PictureBox i in pantherList)
+            {
+                this.Controls.Remove(i);
+            }
+
             zedsList.Clear();
             spikeList.Clear();
+            pantherList.Clear();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 MakeZeds();
             }
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 4; i++)
             {
                 spikes();
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                MakePanther();
             }
 
             goUp = false;
@@ -450,6 +575,7 @@ namespace etozhestkapec
             ammo = 5 + Settings.Default.kamniprokachka;
 
             gametimer.Start();
+            timerforpanther.Start();
         }
 
 

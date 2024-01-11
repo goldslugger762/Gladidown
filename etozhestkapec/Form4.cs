@@ -24,6 +24,7 @@ namespace etozhestkapec
             yourscore.Text = Convert.ToString(Settings.Default.ochki);
             if (yourspeedtxt.Text == "0")
             {
+                costskorost.Font = defaultfont;
                 costskorost.Text = "Стоимость: 500 очков\r\nПовышает твою скорость на 5 единиц за уровень!\r\n";
             }
             if (Settings.Default.speedprokachka == 5)
@@ -57,6 +58,7 @@ namespace etozhestkapec
             }
             if (yourstonestxt.Text == "0")
             {
+                costkamni.Font = defaultfont;
                 costkamni.Text = "Стоимость: 250 очков\r\nПовышает твоё стартовое количество камней на 5 единиц за уровень!\r\n";
             }
             if (Settings.Default.kamniprokachka == 5)
@@ -90,6 +92,7 @@ namespace etozhestkapec
             }
             if (yourheatlhtxt.Text == "0")
             {
+                costhealth.Font = defaultfont;
                 costhealth.Text = "Стоимость: 700 очков\r\nПовышает твоё максимальное количество жизней на 20 единиц за уровень! Живи дольше!";
             }
             if (Settings.Default.helthprokachka == 20)
@@ -415,6 +418,7 @@ namespace etozhestkapec
         private void sbrosendless_Click(object sender, EventArgs e)
         {
             Settings.Default.staroeznachenie = 0;
+            Settings.Default.staroeznachenieplus = 0;
             Settings.Default.Save();
         }
     }

@@ -93,6 +93,8 @@ namespace etozhestkapec
                 gametimer.Stop();
                 nextlevellabel.Visible = true;
                 nextlevel.Visible = true;
+                nextlevel.BringToFront();
+                nextlevellabel.BringToFront();
 
             }
 

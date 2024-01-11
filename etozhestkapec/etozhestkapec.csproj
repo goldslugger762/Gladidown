@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="debugmenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="debugmenu.Designer.cs">
+      <DependentUpon>debugmenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,18 @@
     <Compile Include="Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form8.Designer.cs">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -91,6 +109,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="whip.cs" />
+    <Compile Include="youwinscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="youwinscreen.Designer.cs">
+      <DependentUpon>youwinscreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="debugmenu.resx">
+      <DependentUpon>debugmenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,10 +142,19 @@
     <EmbeddedResource Include="Form6.resx">
       <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form8.resx">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="youwinscreen.resx">
+      <DependentUpon>youwinscreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -183,6 +219,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="game\nuzhnie\spike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game\nuzhnie\pantherd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game\nuzhnie\pantherl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game\nuzhnie\pantherr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game\nuzhnie\pantheru.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="game\nuzhnie\Background4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

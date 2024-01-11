@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using etozhestkapec.Properties;
+
 namespace etozhestkapec
 {
     public partial class Form2 : Form
@@ -15,6 +17,10 @@ namespace etozhestkapec
         public Form2()
         {
             InitializeComponent();
+            if (Settings.Default.endlessplus == 1)
+            {
+                endlessplus.Visible = true;
+            }
         }
 
         private void myHero_Click(object sender, EventArgs e)
@@ -44,6 +50,12 @@ namespace etozhestkapec
         {
             Form form6 = new Form6();
             form6.Show();
+        }
+
+        private void endlessplus_Click(object sender, EventArgs e)
+        {
+            Form form8 = new Form8();
+            form8.Show();
         }
     }
 }

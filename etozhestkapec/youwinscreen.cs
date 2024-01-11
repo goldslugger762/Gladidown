@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace etozhestkapec
 {
-    public partial class Form3 : Form
+    public partial class youwinscreen : Form
     {
-        public Form3()
+        public youwinscreen()
         {
             InitializeComponent();
         }
@@ -20,12 +20,6 @@ namespace etozhestkapec
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            Form form = new debugmenu();
-            form.Show();
         }
     }
 }
